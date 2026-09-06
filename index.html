@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>استخراج شهادة الحضور — اي زد بريدج للتدريب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#04203F; --navy-2:#0C3255; --teal:#0E9294; --teal-d:#0A6E70;
+    --ink:#1C2A33; --muted:#5E7078; --line:#E2E8EA; --paper:#EEF2F3; --card:#fff;
+    --ok:#1E7F4F; --err:#B23A48;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Tajawal",system-ui,"Segoe UI",Tahoma,sans-serif;
+    background:var(--paper); color:var(--ink); line-height:1.7;
+    min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    padding:24px 16px 40px;
+  }
+  .wrap{width:100%; max-width:520px}
+  header{text-align:center; margin:14px 0 22px}
+  .brand{font-weight:800; color:var(--teal); letter-spacing:.5px; font-size:.95rem}
+  h1{font-size:clamp(1.35rem,4.5vw,1.8rem); color:var(--navy); margin:.5rem 0 .3rem; font-weight:800}
+  .sub{color:var(--muted); font-size:.95rem}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:26px 22px; box-shadow:0 1px 2px rgba(4,32,63,.05),0 12px 30px rgba(4,32,63,.07);
+  }
+  .diamonds{display:flex; gap:6px; justify-content:center; margin-bottom:18px}
+  .diamonds i{width:9px;height:9px;transform:rotate(45deg);display:block;background:var(--teal);opacity:.35}
+  .diamonds i:nth-child(3){opacity:1;width:12px;height:12px}
+  label{display:block; font-weight:700; margin-bottom:8px; color:var(--navy)}
+  .hint{color:var(--muted); font-size:.85rem; margin-bottom:14px}
+  input[type=email]{
+    width:100%; padding:13px 14px; font:inherit; font-size:1rem; text-align:left; direction:ltr;
+    border:1.5px solid var(--line); border-radius:10px; background:#fbfdfd; color:var(--ink);
+  }
+  input[type=email]:focus{outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(14,146,148,.15)}
+  button{
+    width:100%; margin-top:14px; padding:13px 16px; font:inherit; font-weight:800; font-size:1rem;
+    color:#fff; background:var(--navy); border:0; border-radius:10px; cursor:pointer;
+    transition:background .15s;
+  }
+  button:hover{background:var(--navy-2)}
+  button:disabled{opacity:.6; cursor:progress}
+  .result{margin-top:18px}
+  .msg{border-radius:10px; padding:14px 14px; font-size:.95rem}
+  .msg.ok{background:#EAF6EF; border:1px solid #BEE3CC; color:var(--ok)}
+  .msg.err{background:#FBECEE; border:1px solid #F0CBD1; color:var(--err)}
+  a.dl{
+    display:block; text-align:center; margin-top:12px; padding:13px 16px; font-weight:800;
+    background:var(--teal); color:#fff; border-radius:10px; text-decoration:none;
+  }
+  a.dl:hover{background:var(--teal-d)}
+  a.view{display:block; text-align:center; margin-top:8px; color:var(--teal-d); font-size:.9rem}
+  footer{margin-top:26px; text-align:center; color:var(--muted); font-size:.82rem}
+  footer a{color:var(--teal-d)}
+  .count{font-variant-numeric:tabular-nums}
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#0C171C;--card:#132228;--ink:#E7EEEF;--muted:#93A2A8;--line:#26383E;--navy:#DCE8F0;--navy-2:#c7d7e2}
+    body{color:var(--ink)}
+    h1{color:#EAF2F8}
+    input[type=email]{background:#0E1B20;color:var(--ink)}
+    button{background:var(--teal)} button:hover{background:var(--teal-d)}
+    .msg.ok{background:#10241B;border-color:#1E4633;color:#7FD1A3}
+    .msg.err{background:#2A1518;border-color:#5A2A31;color:#E8A9B1}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">اي زد بريدج للتدريب</div>
+    <h1>استخراج شهادة الحضور</h1>
+    <div class="sub">ورشة «هندسة الأوامر في الذكاء الاصطناعي للمعلمين والمدربين»<br>السبت 5 سبتمبر 2026 — عن بُعد</div>
+  </header>
+
+  <div class="card">
+    <div class="diamonds"><i></i><i></i><i></i><i></i><i></i></div>
+    <form id="f">
+      <label for="email">البريد الإلكتروني</label>
+      <div class="hint">أدخل <b>نفس البريد</b> الذي عبّأت به نموذج تقييم الورشة.</div>
+      <input id="email" type="email" inputmode="email" autocomplete="email"
+             placeholder="name@example.com" required>
+      <button id="btn" type="submit">استخراج الشهادة</button>
+    </form>
+    <div class="result" id="result" hidden></div>
+  </div>
+
+  <footer>
+    لأي استفسار تواصل معنا عبر الواتساب
+    <a href="https://wa.me/966551033838" target="_blank" rel="noopener" dir="ltr">+966551033838</a><br>
+    © اي زد بريدج للتدريب
+  </footer>
+</div>
+
+<script>
+const DL_NAME = "شهادة حضور — ورشة هندسة الأوامر في الذكاء الاصطناعي.pdf";
+const f = document.getElementById('f');
+const btn = document.getElementById('btn');
+const box = document.getElementById('result');
+
+async function sha256hex(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
+}
+function show(kind, html){ box.hidden = false; box.innerHTML = '<div class="msg '+kind+'">'+html+'</div>'; }
+
+f.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const raw = document.getElementById('email').value || '';
+  const email = raw.trim().toLowerCase().replace(/\s+/g,'');
+  if(!email || !email.includes('@')){ show('err','الرجاء إدخال بريد إلكتروني صحيح.'); return; }
+  btn.disabled = true; btn.textContent = 'جارٍ البحث…';
+  try{
+    const hash = await sha256hex(email);
+    const url = 'c/' + hash + '.pdf';
+    const res = await fetch(url, {cache:'no-store'});
+    if(!res.ok) throw 0;
+    const blob = await res.blob();
+    const href = URL.createObjectURL(blob);
+    show('ok',
+      '✓ تم العثور على شهادتك.'
+      + '<a class="dl" href="'+href+'" download="'+DL_NAME+'">تنزيل الشهادة (PDF)</a>'
+      + '<a class="view" href="'+href+'" target="_blank" rel="noopener">فتح في تبويب جديد</a>');
+  }catch(_){
+    show('err',
+      'لم نعثر على شهادة مرتبطة بهذا البريد.<br>'
+      + 'تأكّد أنه نفس البريد الذي عبّأت به نموذج التقييم. '
+      + 'إن كنت متأكدًا، راسلنا على الواتساب '
+      + '<a href="https://wa.me/966551033838" target="_blank" rel="noopener" dir="ltr">+966551033838</a>.');
+  }finally{
+    btn.disabled = false; btn.textContent = 'استخراج الشهادة';
+  }
+});
+</script>
+</body>
+</html>
