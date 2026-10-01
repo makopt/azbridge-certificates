@@ -78,7 +78,7 @@
     <div class="brand">اي زد بريدج للتدريب</div>
     <h1>استخراج شهادة الحضور</h1>
     <div class="sub">ورشة «هندسة الأوامر في الذكاء الاصطناعي للمعلمين والمدربين»<br>
-      نسختا 5 و10 سبتمبر 2026 — عن بُعد</div>
+      نسخ 5 و10 و30 سبتمبر 2026 — عن بُعد</div>
   </header>
 
   <div class="card">
@@ -127,7 +127,7 @@ f.addEventListener('submit', async (e) => {
     const href = URL.createObjectURL(blob);
     show('ok',
       '✓ تم العثور على شهادتك.<br>'
-      + '<span style="color:var(--muted);font-size:.88rem">إن حضرت الورشتين ستجد الشهادتين في ملفٍ واحد (صفحتان).</span>'
+      + '<span style="color:var(--muted);font-size:.88rem">إن حضرت أكثر من ورشة ستجد كل الشهادات في ملفٍ واحد.</span>'
       + '<a class="dl" href="'+href+'" download="'+DL_NAME+'">تنزيل الشهادة (PDF)</a>'
       + '<a class="view" href="'+href+'" target="_blank" rel="noopener">فتح في تبويب جديد</a>');
   }catch(_){
