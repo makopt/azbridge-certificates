@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head> 
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>استخراج شهادة الحضور — اي زد بريدج للتدريب</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#04203F; --navy-2:#0C3255; --teal:#0E9294; --teal-d:#0A6E70;
@@ -22,7 +22,17 @@
     min-height:100vh; display:flex; flex-direction:column; align-items:center;
     padding:24px 16px 40px;
   }
-  .wrap{width:100%; max-width:520px}
+  html[lang="en"] body{ font-family:"Inter",system-ui,"Segoe UI",Tahoma,sans-serif; }
+  .wrap{width:100%; max-width:520px; position:relative}
+  .langsw{
+    display:flex; justify-content:flex-end; margin-bottom:6px;
+  }
+  .langsw button{
+    width:auto; margin:0; padding:7px 14px; font-size:.82rem; font-weight:700;
+    background:transparent; color:var(--teal-d); border:1.5px solid var(--line);
+    border-radius:20px; cursor:pointer; transition:border-color .15s,background .15s;
+  }
+  .langsw button:hover{border-color:var(--teal); background:rgba(14,146,148,.08)}
   header{text-align:center; margin:14px 0 22px}
   .brand{font-weight:800; color:var(--teal); letter-spacing:.5px; font-size:.95rem}
   h1{font-size:clamp(1.35rem,4.5vw,1.8rem); color:var(--navy); margin:.5rem 0 .3rem; font-weight:800}
@@ -67,6 +77,7 @@
     h1{color:#EAF2F8}
     input[type=email]{background:#0E1B20;color:var(--ink)}
     button{background:var(--teal)} button:hover{background:var(--teal-d)}
+    .langsw button{border-color:var(--line); color:var(--teal)}
     .msg.ok{background:#10241B;border-color:#1E4633;color:#7FD1A3}
     .msg.err{background:#2A1518;border-color:#5A2A31;color:#E8A9B1}
   }
@@ -74,37 +85,93 @@
 </head>
 <body>
 <div class="wrap">
+  <div class="langsw"><button id="langBtn" type="button">English</button></div>
   <header>
-    <div class="brand">اي زد بريدج للتدريب</div>
-    <h1>استخراج شهادة الحضور</h1>
-    <div class="sub">ورشة «هندسة الأوامر في الذكاء الاصطناعي للمعلمين والمدربين»<br>
-      نسخ 5 و10 و30 سبتمبر 2026 — عن بُعد</div>
+    <div class="brand" data-ar="اي زد بريدج للتدريب" data-en="AZ Bridge Training">اي زد بريدج للتدريب</div>
+    <h1 data-ar="استخراج شهادة الحضور" data-en="Retrieve Your Certificate">استخراج شهادة الحضور</h1>
+    <div class="sub"
+      data-ar="ورشة «هندسة الأوامر في الذكاء الاصطناعي للمعلمين والمدربين»<br>نسخ 5 و10 و30 سبتمبر 2026 — عن بُعد"
+      data-en="Workshop &laquo;Prompt Engineering for Teachers and Trainers&raquo;<br>Sept 5, 10 &amp; 30, 2026 &mdash; Online">
+      ورشة «هندسة الأوامر في الذكاء الاصطناعي للمعلمين والمدربين»<br>
+      نسخ 5 و10 و30 سبتمبر 2026 — عن بُعد
+    </div>
   </header>
 
   <div class="card">
     <div class="diamonds"><i></i><i></i><i></i><i></i><i></i></div>
     <form id="f">
-      <label for="email">البريد الإلكتروني</label>
-      <div class="hint">أدخل <b>نفس البريد</b> الذي عبّأت به نموذج تقييم الورشة.</div>
+      <label for="email" data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label>
+      <div class="hint" data-ar="أدخل <b>نفس البريد</b> الذي عبّأت به نموذج تقييم الورشة."
+           data-en="Enter the <b>same email</b> you used in the workshop evaluation form.">
+        أدخل <b>نفس البريد</b> الذي عبّأت به نموذج تقييم الورشة.
+      </div>
       <input id="email" type="email" inputmode="email" autocomplete="email"
              placeholder="name@example.com" required>
-      <button id="btn" type="submit">استخراج الشهادة</button>
+      <button id="btn" type="submit" data-ar="استخراج الشهادة" data-en="Get Certificate">استخراج الشهادة</button>
     </form>
     <div class="result" id="result" hidden></div>
   </div>
 
   <footer>
-    لأي استفسار تواصل معنا عبر الواتساب
+    <span data-ar="لأي استفسار تواصل معنا عبر الواتساب" data-en="For any question, reach us on WhatsApp">لأي استفسار تواصل معنا عبر الواتساب</span>
     <a href="https://wa.me/966551033838" target="_blank" rel="noopener" dir="ltr">+966551033838</a><br>
-    © اي زد بريدج للتدريب
+    <span data-ar="© اي زد بريدج للتدريب" data-en="© AZ Bridge Training">© اي زد بريدج للتدريب</span>
   </footer>
 </div>
 
 <script>
-const DL_NAME = "شهادة حضور — ورشة هندسة الأوامر في الذكاء الاصطناعي.pdf";
+const DL_NAME = { ar: "شهادة حضور — ورشة هندسة الأوامر في الذكاء الاصطناعي.pdf",
+                   en: "Attendance Certificate - Prompt Engineering Workshop.pdf" };
+const MSGS = {
+  ar: {
+    searching: 'جارٍ البحث…',
+    submit: 'استخراج الشهادة',
+    badEmail: 'الرجاء إدخال بريد إلكتروني صحيح.',
+    found: '✓ تم العثور على شهادتك.<br>'
+      + '<span style="color:var(--muted);font-size:.88rem">إن حضرت أكثر من ورشة ستجد كل الشهادات في ملفٍ واحد.</span>',
+    download: 'تنزيل الشهادة (PDF)',
+    openTab: 'فتح في تبويب جديد',
+    notFound: 'لم نعثر على شهادة مرتبطة بهذا البريد.<br>'
+      + 'تأكّد أنه نفس البريد الذي عبّأت به نموذج التقييم. '
+      + 'إن كنت متأكدًا، راسلنا على الواتساب '
+      + '<a href="https://wa.me/966551033838" target="_blank" rel="noopener" dir="ltr">+966551033838</a>.'
+  },
+  en: {
+    searching: 'Searching…',
+    submit: 'Get Certificate',
+    badEmail: 'Please enter a valid email address.',
+    found: '✓ Your certificate was found.<br>'
+      + '<span style="color:var(--muted);font-size:.88rem">If you attended more than one workshop, all certificates are in a single file.</span>',
+    download: 'Download Certificate (PDF)',
+    openTab: 'Open in a new tab',
+    notFound: 'We couldn\'t find a certificate linked to this email.<br>'
+      + 'Make sure it\'s the same email you used in the evaluation form. '
+      + 'If you\'re sure it\'s correct, message us on WhatsApp '
+      + '<a href="https://wa.me/966551033838" target="_blank" rel="noopener" dir="ltr">+966551033838</a>.'
+  }
+};
+
+let lang = localStorage.getItem('az_lang') || 'ar';
+
+function applyLang(l){
+  lang = l;
+  localStorage.setItem('az_lang', l);
+  document.documentElement.lang = l;
+  document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + l);
+  });
+  document.getElementById('langBtn').textContent = (l === 'ar') ? 'English' : 'العربية';
+  if (!btn.disabled) btn.textContent = MSGS[l].submit;
+  box.hidden = true;
+}
+
 const f = document.getElementById('f');
 const btn = document.getElementById('btn');
 const box = document.getElementById('result');
+const langBtn = document.getElementById('langBtn');
+
+langBtn.addEventListener('click', () => applyLang(lang === 'ar' ? 'en' : 'ar'));
 
 async function sha256hex(str){
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -116,8 +183,8 @@ f.addEventListener('submit', async (e) => {
   e.preventDefault();
   const raw = document.getElementById('email').value || '';
   const email = raw.trim().toLowerCase().replace(/\s+/g,'');
-  if(!email || !email.includes('@')){ show('err','الرجاء إدخال بريد إلكتروني صحيح.'); return; }
-  btn.disabled = true; btn.textContent = 'جارٍ البحث…';
+  if(!email || !email.includes('@')){ show('err', MSGS[lang].badEmail); return; }
+  btn.disabled = true; btn.textContent = MSGS[lang].searching;
   try{
     const hash = await sha256hex(email);
     const url = 'c/' + hash + '.pdf';
@@ -126,20 +193,17 @@ f.addEventListener('submit', async (e) => {
     const blob = await res.blob();
     const href = URL.createObjectURL(blob);
     show('ok',
-      '✓ تم العثور على شهادتك.<br>'
-      + '<span style="color:var(--muted);font-size:.88rem">إن حضرت أكثر من ورشة ستجد كل الشهادات في ملفٍ واحد.</span>'
-      + '<a class="dl" href="'+href+'" download="'+DL_NAME+'">تنزيل الشهادة (PDF)</a>'
-      + '<a class="view" href="'+href+'" target="_blank" rel="noopener">فتح في تبويب جديد</a>');
+      MSGS[lang].found
+      + '<a class="dl" href="'+href+'" download="'+DL_NAME[lang]+'">'+MSGS[lang].download+'</a>'
+      + '<a class="view" href="'+href+'" target="_blank" rel="noopener">'+MSGS[lang].openTab+'</a>');
   }catch(_){
-    show('err',
-      'لم نعثر على شهادة مرتبطة بهذا البريد.<br>'
-      + 'تأكّد أنه نفس البريد الذي عبّأت به نموذج التقييم. '
-      + 'إن كنت متأكدًا، راسلنا على الواتساب '
-      + '<a href="https://wa.me/966551033838" target="_blank" rel="noopener" dir="ltr">+966551033838</a>.');
+    show('err', MSGS[lang].notFound);
   }finally{
-    btn.disabled = false; btn.textContent = 'استخراج الشهادة';
+    btn.disabled = false; btn.textContent = MSGS[lang].submit;
   }
 });
+
+applyLang(lang);
 </script>
 </body>
 </html>
