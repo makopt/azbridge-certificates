@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>استخراج شهادة الحضور — اي زد بريدج للتدريب</title>
+<title>Retrieve Your Certificate — AZ Bridge Training</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -17,16 +17,14 @@
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
-    font-family:"Tajawal",system-ui,"Segoe UI",Tahoma,sans-serif;
+    font-family:"Inter",system-ui,"Segoe UI",Tahoma,sans-serif;
     background:var(--paper); color:var(--ink); line-height:1.7;
     min-height:100vh; display:flex; flex-direction:column; align-items:center;
     padding:24px 16px 40px;
   }
-  html[lang="en"] body{ font-family:"Inter",system-ui,"Segoe UI",Tahoma,sans-serif; }
+  html[lang="ar"] body{ font-family:"Tajawal",system-ui,"Segoe UI",Tahoma,sans-serif; }
   .wrap{width:100%; max-width:520px; position:relative}
-  .langsw{
-    display:flex; justify-content:flex-end; margin-bottom:6px;
-  }
+  .langsw{display:flex; justify-content:flex-end; margin-bottom:6px}
   .langsw button{
     width:auto; margin:0; padding:7px 14px; font-size:.82rem; font-weight:700;
     background:transparent; color:var(--teal-d); border:1.5px solid var(--line);
@@ -85,37 +83,37 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="langsw"><button id="langBtn" type="button">English</button></div>
+  <div class="langsw"><button id="langBtn" type="button">العربية</button></div>
   <header>
-    <div class="brand" data-ar="اي زد بريدج للتدريب" data-en="AZ Bridge Training">اي زد بريدج للتدريب</div>
-    <h1 data-ar="استخراج شهادة الحضور" data-en="Retrieve Your Certificate">استخراج شهادة الحضور</h1>
+    <div class="brand" data-ar="اي زد بريدج للتدريب" data-en="AZ Bridge Training">AZ Bridge Training</div>
+    <h1 data-ar="استخراج شهادة الحضور" data-en="Retrieve Your Certificate">Retrieve Your Certificate</h1>
     <div class="sub"
-      data-ar="ورشة «هندسة الأوامر في الذكاء الاصطناعي للمعلمين والمدربين»<br>نسخ 5 و10 و30 سبتمبر 2026 — عن بُعد"
-      data-en="Workshop &laquo;Prompt Engineering for Teachers and Trainers&raquo;<br>Sept 5, 10 &amp; 30, 2026 &mdash; Online">
-      ورشة «هندسة الأوامر في الذكاء الاصطناعي للمعلمين والمدربين»<br>
-      نسخ 5 و10 و30 سبتمبر 2026 — عن بُعد
+      data-ar="ورشات «هندسة الأوامر في الذكاء الاصطناعي»<br>5، 10، 30 سبتمبر و14 أكتوبر 2026"
+      data-en="Prompt Engineering Workshops<br>Sept 5, 10, 30 &amp; Oct 14, 2026">
+      Prompt Engineering Workshops<br>
+      Sept 5, 10, 30 &amp; Oct 14, 2026
     </div>
   </header>
 
   <div class="card">
     <div class="diamonds"><i></i><i></i><i></i><i></i><i></i></div>
     <form id="f">
-      <label for="email" data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label>
+      <label for="email" data-ar="البريد الإلكتروني" data-en="Email Address">Email Address</label>
       <div class="hint" data-ar="أدخل <b>نفس البريد</b> الذي عبّأت به نموذج تقييم الورشة."
            data-en="Enter the <b>same email</b> you used in the workshop evaluation form.">
-        أدخل <b>نفس البريد</b> الذي عبّأت به نموذج تقييم الورشة.
+        Enter the <b>same email</b> you used in the workshop evaluation form.
       </div>
       <input id="email" type="email" inputmode="email" autocomplete="email"
              placeholder="name@example.com" required>
-      <button id="btn" type="submit" data-ar="استخراج الشهادة" data-en="Get Certificate">استخراج الشهادة</button>
+      <button id="btn" type="submit" data-ar="استخراج الشهادة" data-en="Get Certificate">Get Certificate</button>
     </form>
     <div class="result" id="result" hidden></div>
   </div>
 
   <footer>
-    <span data-ar="لأي استفسار تواصل معنا عبر الواتساب" data-en="For any question, reach us on WhatsApp">لأي استفسار تواصل معنا عبر الواتساب</span>
+    <span data-ar="لأي استفسار تواصل معنا عبر الواتساب" data-en="For any question, reach us on WhatsApp">For any question, reach us on WhatsApp</span>
     <a href="https://wa.me/966551033838" target="_blank" rel="noopener" dir="ltr">+966551033838</a><br>
-    <span data-ar="© اي زد بريدج للتدريب" data-en="© AZ Bridge Training">© اي زد بريدج للتدريب</span>
+    <span data-ar="© اي زد بريدج للتدريب" data-en="© AZ Bridge Training">© AZ Bridge Training</span>
   </footer>
 </div>
 
@@ -151,7 +149,7 @@ const MSGS = {
   }
 };
 
-let lang = localStorage.getItem('az_lang') || 'ar';
+let lang = localStorage.getItem('az_lang') || 'en';
 
 function applyLang(l){
   lang = l;
